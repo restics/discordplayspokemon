@@ -1,0 +1,15 @@
+# docker-compose.yml
+version: '3.8'
+services:
+  dppbot:
+    build: .
+    restart: unless-stopped
+    volumes:
+      - ./roms:/app/roms
+      - ./saves:/app/saves
+      - ./data:/app/data
+      - ./temp:/app/temp
+    env_file:
+      - src/.env
+    environment:
+      - PYTHONUNBUFFERED=1
