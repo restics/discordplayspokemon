@@ -10,15 +10,11 @@ from discord.ext import commands
 import dotenv
 from ui import GameboyPad, RomsDropdown, play_game_screen
 
-# Load environment variables from .env file
-dotenv.load_dotenv()
-
 TOKEN = os.getenv('DISCORD_BOT_TOKEN')
 if TOKEN is None:
     raise ValueError("DISCORD_BOT_TOKEN environment variable not set.")
 
 intents = discord.Intents.default()
-intents.message_content = True  # Required for reading message content
 
 bot = commands.Bot(command_prefix='!', intents=intents)
 is_bot_active = False;
@@ -65,6 +61,9 @@ async def play(interaction: discord.Interaction):
 
 @bot.tree.command(name="save")
 async def save(interaction: discord.Interaction):
+    if not is_admin(interaction):
+        await interaction.response.send_message("You must be an admin to use this command.", ephemeral=True)
+        return 
     instance.save()
     await interaction.response.send_message('State saved to saves/save.state', ephemeral=True)
 
@@ -91,7 +90,8 @@ def is_admin(interaction: discord.Interaction) -> bool:
 
 def exit_handler():
     Logger.info('application terminating, save game')
-    instance.save()
+    if hasattr(instance, 'pyboy') and instance.pyboy:
+        instance.save()
 
 atexit.register(exit_handler)
 

@@ -45,17 +45,27 @@ class Player:
     async def load_rom(self, rom : str):
         self.pyboy = PyBoy(f'roms/{rom}')
         if os.path.exists('saves/save.state'):
-            with open('saves/save.state', 'rb') as f:
-                self.pyboy.load_state(f)
+            try:
+                with open('saves/save.state', 'rb') as f:
+                    self.pyboy.load_state(f)
+                Logger.info("Loaded existing save state")
+            except Exception as e:
+                Logger.warning("Failed to load save state: %s. Starting fresh.", e)
+                # Remove corrupted save file
+                try:
+                    os.remove('saves/save.state')
+                except:
+                    pass
         else:
             Logger.info("No saves found, starting new run..")
 
         os.makedirs(FRAME_DIR, exist_ok=True)
+        # Try to remove existing frame file, but don't fail if we can't
         if os.path.exists(FRAME_PATH):
             try:
                 os.remove(FRAME_PATH)
-            except FileNotFoundError:
-                pass
+            except (FileNotFoundError, PermissionError, OSError):
+                Logger.warning("Could not remove existing frame file, continuing anyway")
         self.pyboy.screen.image.save(FRAME_PATH)
         await self.start_game()
 
@@ -116,7 +126,7 @@ class Player:
             for key, value in self.moves_this_round.items():
                 moves_string += f'{key} : {value}\n'
                 
-            reply_string = f'(DEMOCRACY) Submitted move input for {btn_input}. \n current tally is: {moves_string}'
+            reply_string = f'(DEMOCRACY) Submitted move input for {btn_input}. \n current tally is:\n{moves_string}'
             Logger.info(reply_string)
             return reply_string
         else:

@@ -9,7 +9,6 @@ services:
       - ./saves:/app/saves
       - ./data:/app/data
       - ./temp:/app/temp
-    env_file:
-      - src/.env
     environment:
       - PYTHONUNBUFFERED=1
+      - DISCORD_BOT_TOKEN=${DISCORD_BOT_TOKEN}
