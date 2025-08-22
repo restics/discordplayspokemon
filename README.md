@@ -1,4 +1,4 @@
-# Discord Pokemon Bot (DPPBot)
+# Discord Plays Pokemon Bot (DPPBot)
 
 A Discord bot that allows users to play Game Boy ROMs through a collaborative voting system, inspired by Twitch Plays Pokemon. Users can vote on button inputs in democracy mode or directly control the game in anarchy mode.
 
