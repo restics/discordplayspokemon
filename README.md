@@ -80,13 +80,14 @@ bottesting/
 | Command | Description | Usage |
 |---------|-------------|-------|
 | `/play` | Opens the game controller interface | Available to all users |
-| `/save` | Saves the current game state | Available to all users |
+
 
 ### Admin Commands
 
 | Command | Description | Usage | Admin Only |
 |---------|-------------|-------|------------|
 | `/load` | Load a ROM file | Select from available ROMs | ✅ |
+| `/save` | Saves the current game state | ✅ |
 | `/setmode` | Switch between democracy/anarchy | `democracy` or `anarchy` | ✅ |
 
 ## 🎯 Game Modes
