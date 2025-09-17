@@ -2,17 +2,17 @@
 
 A Discord bot that allows users to play Game Boy ROMs through a collaborative voting system, inspired by Twitch Plays Pokemon. Users can vote on button inputs in democracy mode or directly control the game in anarchy mode.
 
-## 🎮 Features
+## Features
 
 - **Multiplayer Game Boy Emulation**: Play Game Boy ROMs through Discord
 - **Democracy Mode**: Users vote on button inputs, most popular choice wins
 - **Anarchy Mode**: Direct button control for immediate response
-- **Real-time Game Display**: Live game screen updates in Discord
+- **Realtime Game Display**: Live game screen updates in Discord
 - **Save State Management**: Automatic and manual game state saving
 - **Input Logging**: Database tracking of all user inputs for analysis
 - **Admin Controls**: ROM loading and mode switching restricted to admins
 
-## 🏗️ Architecture
+## Architecture
 
 ### Core Components
 
@@ -38,7 +38,7 @@ bottesting/
 4. **Database Logging**: All inputs logged with user ID, button, and timestamp
 5. **Display Update**: Current game frame saved and displayed in Discord
 
-## 🚀 Installation & Setup
+## Installation & Setup
 
 ### Prerequisites
 
@@ -73,7 +73,7 @@ bottesting/
    python src/bot.py
    ```
 
-## 📱 Discord Commands
+## Discord Commands
 
 ### User Commands
 
@@ -90,7 +90,7 @@ bottesting/
 | `/save` | Saves the current game state | ✅ |
 | `/setmode` | Switch between democracy/anarchy | `democracy` or `anarchy` | ✅ |
 
-## 🎯 Game Modes
+## Game Modes
 
 ### Democracy Mode (Default)
 - Users vote on button inputs during a 15-second round
@@ -104,7 +104,7 @@ bottesting/
 - Direct control for fast-paced gameplay
 - All inputs still logged to database
 
-## 🗄️ Database Schema
+## Database Schema
 
 ### Moves Table
 ```sql
@@ -122,7 +122,7 @@ CREATE TABLE moves (
 - Monitor democracy vs anarchy usage
 - Time-based input analysis
 
-## 🔧 Technical Details
+## Technical Details
 
 ### Button Mapping
 ```python
@@ -150,7 +150,7 @@ class Button(IntEnum):
 - Error handling for invalid inputs
 - Comprehensive logging of all operations
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -176,21 +176,21 @@ Enable detailed logging by modifying `logger.py`:
 Logger.setLevel(logging.DEBUG)
 ```
 
-## 📊 Performance Considerations
+## Performance Considerations
 
 - **Memory Usage**: PyBoy emulator loads entire ROM into memory
 - **Database Performance**: SQLite with proper indexing for input logging
 - **Discord Rate Limits**: Bot respects Discord API limits
 - **Frame Updates**: Optimized image saving and Discord file handling
 
-## 🔒 Security Features
+## Security Features
 
 - Admin-only ROM loading and mode switching
 - Input validation and sanitization
 - User ID verification for voting system
 - Safe file handling for ROMs and saves
 
-## 🚧 Future Enhancements
+## Future Enhancements
 
 - [ ] Web-based analytics dashboard
 - [ ] Multiple ROM support with save state management
@@ -198,7 +198,7 @@ Logger.setLevel(logging.DEBUG)
 - [ ] Integration with external game databases
 - [ ] Mobile-optimized UI components
 
-## 📝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -206,11 +206,11 @@ Logger.setLevel(logging.DEBUG)
 4. Test thoroughly
 5. Submit a pull request
 
-## 📄 License
+## License
 
 MIT License
 
-## 🤝 Support
+## Support
 
 For issues and questions:
 - Create an issue in the repository
